@@ -22,9 +22,9 @@ sub import {
 
 sub do_remove {
     my $str = shift;
-    if ($ENV{USER_AGENT} =~ /^DoCoMo/) {
+    if ($ENV{HTTP_USER_AGENT} =~ /^DoCoMo/) {
 	$str = remove_pictogram($str);
-    } elsif ($ENV{USER_AGENT} =~ /-J-PHONE/) {
+    } elsif ($ENV{HTTP_USER_AGENT} =~ /-J-PHONE/) {
 	$str =~ s/\x1B\$(.+?)\x0F//g;
     }
     return $str;
